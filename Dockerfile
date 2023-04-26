@@ -7,4 +7,4 @@ RUN pip install --root-user-action=ignore requests
 
 EXPOSE 8000/tcp
 # Define the entry point for the container
-CMD ["python", "py.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "app/py.py", "runserver", "0.0.0.0:8000"]
