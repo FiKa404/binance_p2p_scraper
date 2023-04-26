@@ -13,4 +13,4 @@ COPY . /app
 
 EXPOSE 8000/tcp
 # Define the entry point for the container
-CMD ["python", "/bin/sh/py.py", "0.0.0.0:8000"]
+CMD ["python", "py.py", "0.0.0.0:8000"]
