@@ -5,10 +5,11 @@ RUN pip install --upgrade pip
 
 RUN pip install --root-user-action=ignore requests
 
-# Copy everything...
-COPY . ./
-# See everything (in a linux container)...
-RUN dir -s    
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the application files into the working directory
+COPY . /app
 
 EXPOSE 8000/tcp
 # Define the entry point for the container
