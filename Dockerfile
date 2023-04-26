@@ -1,14 +1,18 @@
 # Use the official Python image as the base image
 FROM python:3.8
 
-# Set the working directory in the container
-WORKDIR /app
+RUN pip install --upgrade pip
 
-# Copy the application files into the working directory
-COPY . /app
+RUN adduser -D myuser
+USER myuser
+WORKDIR /home/myuser
 
-# Install the application dependencies
-RUN pip install -r requirements.txt
+COPY --chown=myuser:myuser requirements.txt requirements.txt
+RUN pip install --user -r requirements.txt
+
+ENV PATH="/home/myuser/.local/bin:${PATH}"
+
+COPY --chown=myuser:myuser . .
 
 # Define the entry point for the container
 CMD ["python", "py.py", "runserver", "0.0.0.0:8000"]
