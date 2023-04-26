@@ -3,8 +3,7 @@ FROM python:3.8
 
 RUN pip install --upgrade pip
 
-pip install --upgrade pip
-pip install --root-user-action=ignore requests
+RUN pip install --root-user-action=ignore requests
 
 # Define the entry point for the container
 CMD ["python", "py.py", "runserver", "0.0.0.0:8000"]
